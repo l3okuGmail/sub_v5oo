@@ -4,9 +4,10 @@ export default {
 
     // 判断请求的域名是subv5oo2-em4aivtn.b4a.run 或者subv6oo-9qniz657.b4a.run
     if (url.hostname === 'subv5oo2-em4aivtn.b4a.run' || url.hostname === 'subv6oo-9qniz657.b4a.run') {
-      // 保留原路径，只修改hostname
-      url.hostname = 'subb.v5oo.eu.org';  // 只修改域名部分，不影响路径
+      // 保留原路径和查询部分，只修改hostname
+      url.hostname = 'subb.v5oo.eu.org';  // 只修改域名部分
 
+      // 重新创建请求，并转发到新的目标域名
       let new_request = new Request(url, request);
       return fetch(new_request);
     }
